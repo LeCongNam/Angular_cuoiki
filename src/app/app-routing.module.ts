@@ -4,21 +4,25 @@ import { ContentComponent } from './content/content.component';
 import { AddFormComponent } from './add-form/add-form.component';
 import { RegisterComponent } from './content/register/register.component';
 import { LoginComponent } from './content/login/login.component';
+import { ReportComponent } from './content/report/report.component';
+import { AuthGuardService } from './content/AuthGuard/auth-guard.service';
 
 
 const routes: Routes = [
   {                                         
     path: '',
-    redirectTo: '/home',
+    redirectTo: '/login',
     pathMatch: 'full',
   },
   {
     path: 'home',
-    component: ContentComponent
+    component: ContentComponent,
+    canActivate:[AuthGuardService] 
   },
   {
     path: 'add-project',
-    component: AddFormComponent
+    component: AddFormComponent,
+    canActivate:[AuthGuardService] 
   },
   {
     path: 'register',
@@ -27,7 +31,13 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'report',
+    component: ReportComponent,
+    canActivate:[AuthGuardService] 
   }
+  
   
   
 ];
