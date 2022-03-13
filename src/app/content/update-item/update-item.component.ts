@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges, EventEmitter, Output } from '@angular/core';
 import Swal from 'sweetalert2/dist/sweetalert2.all.js';
 
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
@@ -16,12 +16,13 @@ export class UpdateItemComponent implements OnInit {
   event: any = 0
   projectForm: FormGroup | any
   projectItem: any = {}
+  isReload:Boolean|any= true
 
-
+  @Output() reloadPage = new EventEmitter<boolean>()
 
   @Input() item: object = {};
   project_name: any;
-  progress: number=0;
+  progress: number = 0;
   author: any;
   state: any;
 
@@ -55,43 +56,53 @@ export class UpdateItemComponent implements OnInit {
         this.projectItem.day_complete = new Date(this.projectItem.day_complete).toISOString().slice(0, 10)
         this.projectItem.day_start = new Date(this.projectItem.day_start).toISOString().slice(0, 10)
         this.myValue = this.projectItem.progress
+        this.project_name = this.projectItem.project_name
+        this.progress = this.projectItem.progress
+        this.author = this.projectItem.author
+        this.state = this.projectItem.state
       }
     }
   }
 
-  onSubmit(projectForm:NgForm){
-    if(projectForm.status == 'VALID'){
-      let id =  this.projectItem._id
-      
-        let dataToJson = JSON.stringify({...projectForm.value})
-        this.projectServices.updateProject(id,dataToJson)
-            .then((res:any)=>{
-               Swal.fire({
-                    'title':"Cập nhật project thành công: ",
-                    'icon':'success'
-                })
-                this.project_name = 'Người thực hiện'
-                this.projectItem.day_complete = ''
-                this.projectItem.day_start = ''
-                this.progress = 0
-                this.author = ''
-                this.state = ''
-            })
-            .catch(err=>{
-              Swal.fire({
-                title:"Lỗi khi thêm project! Vui lòng thử lại",
-                icon:'error'
-            })
-            console.log(err);
-            
-            })
-    }else{
-        Swal.fire({
-            'title':"Vui lòng kiểm tra lại thông tin",
-            'icon':'error'
+  onSubmit(projectForm: NgForm) {
+    console.log(projectForm.value);
+
+    if (projectForm.status == 'VALID') {
+      let id = this.projectItem._id
+
+      let dataToJson = JSON.stringify({ ...projectForm.value })
+      this.projectServices.updateProject(id, dataToJson)
+        .then((res: any) => {
+          Swal.fire({
+            'title': "Cập nhật project thành công: ",
+            'icon': 'success'
+          })
+          this.projectItem.day_complete = ''
+          this.projectItem.day_start = ''
+          this.project_name = 'Người thực hiện'
+          this.progress = 0
+          this.author = ''
+          this.state = ''
+          this.sendRequestReload()
         })
+        .catch(err => {
+          Swal.fire({
+            title: "Lỗi khi thêm project! Vui lòng thử lại",
+            icon: 'error'
+          })
+          console.log(err);
+        })
+    } else {
+      Swal.fire({
+        'title': "Vui lòng kiểm tra lại thông tin",
+        'icon': 'error'
+      })
     }
-}
+  }
+
+  sendRequestReload(){
+    this.reloadPage.emit(this.isReload)
+  }
 
 
 

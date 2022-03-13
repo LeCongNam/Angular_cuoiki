@@ -1,5 +1,5 @@
 <div class="container-fluid content-fix">
-    <app-update-item [item]=projectItem></app-update-item>
+    <app-update-item (reloadPage)="reloadPage($event)" [item]=projectItem></app-update-item>
 
     <div class="card shadow mb-4">
         <div class="card-body">

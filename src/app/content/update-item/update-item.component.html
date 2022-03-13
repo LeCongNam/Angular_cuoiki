@@ -15,15 +15,17 @@
     <div class="form-row">
       <div class="col-md-4 mb-3">
         <label for="validationTooltip01">Tên dự án <span class="require-inp">*</span></label>
-        <input type="text" formControlName="project_name" ngModel="{{project_name}}" value="{{projectItem.project_name}}"
-          class="form-control" id="validationTooltip01" placeholder="Tên dự án" required>
+        <input type="text" formControlName="project_name" 
+          [(ngModel)]="project_name"
+          class="form-control" id="validationTooltip01"
+           placeholder="Tên dự án" >
         <!-- Start Err -->
         <div class="error" *ngIf="projectForm.get('project_name').dirty && 
-        projectForm.get('project_name').errors?.required">
+            projectForm.get('project_name').errors?.required">
           Tên dự án không được bỏ trống*
         </div>
         <div class="error" *ngIf="projectForm.get('project_name').dirty && 
-   projectForm.get('project_name').errors?.['minlength']">
+            projectForm.get('project_name').errors?.['minlength']">
           Tên dự án tối thiểu 6 kí tự*
         </div>
         <!-- end err -->
@@ -51,8 +53,11 @@
     <div class="form-row">
       <div class="col-md-6 mb-3">
         <label for="validationTooltip03">Người thực hiện <span class="require-inp">*</span></label>
-        <input type="text" formControlName="author" [(ngModel)]="projectItem.author" class="form-control"
-          formControlName="author" placeholder="Người thực hiện dự án" required>
+        <input type="text" formControlName="author"
+         [(ngModel)]="author"
+          class="form-control"
+          formControlName="author"
+           placeholder="Người thực hiện dự án" >
         <!-- Start Err Mes -->
         <div class="error" *ngIf="projectForm.get('author').dirty && 
              projectForm.get('author').errors?.required">
@@ -81,13 +86,16 @@
       <div class="col-md-3 mb-3">
         <div class="form-group">
           <label for="state">Tiến độ hoàn thành:
-            <b> {{myValue }}%</b>
+            <b> {{progress }}%</b>
           </label>
-          <input  type="range" [(ngModel)]="myValue" formControlName="progress"
-            value="{{projectItem.progress}}" id="formControlRange" min="0" max="100" />
+          <input  type="range"
+           [(ngModel)]="progress" 
+           formControlName="progress"
+            value="{{projectItem.progress}}"
+             id="formControlRange" min="0" max="100" />
         </div>
       </div>
     </div>
-    <button class="btn btn-primary" type="submit">Cập nhật</button>
+    <button (click)="sendRequestReload()" class="btn btn-primary" type="submit">Cập nhật</button>
   </form>
 </div>

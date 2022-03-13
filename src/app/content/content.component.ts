@@ -129,5 +129,10 @@ export class ContentComponent implements OnInit {
         return this.data
     }
 
+    reloadPage(varReq:any){
+        console.log(1);
+        
+            this.loadProject()
+    }
 
 }
