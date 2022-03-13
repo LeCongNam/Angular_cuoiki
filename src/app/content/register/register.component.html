@@ -1,0 +1,69 @@
+<div class="container-fluid content-fix">
+    <div class="card-body p-0">
+        <!-- Nested Row within Card Body -->
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-7">
+                <div class="p-5">
+                    <div class="text-center">
+                        <h1 class="h4 text-gray-900 mb-4">Tạo tài khoản</h1>
+                    </div>
+                    <form #fm="ngForm" [formGroup]="userForm" (ngSubmit)="onSubmit(userForm)" class="user">
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control form-control-user" id="exampleLastName"
+                                    formControlName="user_name" placeholder="User Name">
+                            </div>
+                            <!-- Start Err -->
+                            <div class="error" *ngIf="userForm.get('user_name').dirty && 
+                                    userForm.get('user_name').errors?.required">
+                                UserName không được bỏ trống*
+                            </div>
+                            <div class="error" *ngIf="userForm.get('user_name').dirty && 
+                                userForm.get('user_name').errors?.['minlength']">
+                                UserName tối thiểu 6 kí tự*
+                            </div>
+                            <!-- end err -->
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control form-control-user" id="exampleInputEmail"
+                                formControlName="email" placeholder="Email Address">
+                            <!-- Start Err -->
+                            <div class="error" *ngIf="userForm.get('email').dirty && 
+                            userForm.get('email').errors?.required">
+                                Email không được bỏ trống*
+                            </div>
+                            <div class="error" *ngIf="userForm.get('email').dirty && 
+                                     userForm.get('email').errors?.['email']">
+                                Email không hợp lệ*
+                            </div>
+                            <!-- end err -->
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <input type="password" class="form-control form-control-user" id="exampleRepeatPassword"
+                                 formControlName="password"   placeholder="Password">
+                            </div>
+                            <!-- Start Err -->
+                            <div class="error" *ngIf="userForm.get('password').dirty && 
+                              userForm.get('password').errors?.required">
+                                password không được bỏ trống*
+                            </div>
+                            <div class="error" *ngIf="userForm.get('password').dirty && 
+                          userForm.get('password').errors?.['minlength']">
+                                password tối thiểu 6 kí tự*
+                            </div>
+                            <!-- end err -->
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-user btn-block">
+                            Register Account
+                        </button>
+                        <hr>
+                    </form>
+                    <hr>
+                </div>
+            </div>
+            <div class="col-lg-2"></div>
+        </div>
+    </div>
+</div>

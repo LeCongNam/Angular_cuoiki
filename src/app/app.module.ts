@@ -16,6 +16,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoaddingComponent } from './content/loadding/loadding.component';
 import { UpdateItemComponent } from './content/update-item/update-item.component';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { RegisterComponent } from './content/register/register.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     AddFormComponent,
     LoaddingComponent,
     UpdateItemComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
