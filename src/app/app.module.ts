@@ -18,6 +18,9 @@ import { UpdateItemComponent } from './content/update-item/update-item.component
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { RegisterComponent } from './content/register/register.component';
 import { LoginComponent } from './content/login/login.component';
+import { ReportComponent } from './content/report/report.component';
+import { Ng2GoogleChartsModule } from 'ng2-google-charts';
+import { GoogleChartComponent } from './content/report/google-chart/google-chart.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +35,8 @@ import { LoginComponent } from './content/login/login.component';
     UpdateItemComponent,
     RegisterComponent,
     LoginComponent,
+    ReportComponent,
+    GoogleChartComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,8 +47,12 @@ import { LoginComponent } from './content/login/login.component';
     ReactiveFormsModule,
     SweetAlert2Module,
     SweetAlert2Module.forRoot(),
+    Ng2GoogleChartsModule
   ],
-  providers: [LoggerService],
+  providers: [
+    LoggerService,
+  ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

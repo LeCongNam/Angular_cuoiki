@@ -1,0 +1,26 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <h1>Báo cáo tiến độ thi công</h1>
+            <div id="pie_chart" 
+            [chartData]="pie_ChartData"
+             [chartOptions]="pie_ChartOptions"
+              chartType="PieChart"
+                GoogleChart></div>
+        </div>
+        <hr>
+    </div>
+    <div class="row">
+        <div class="row">
+            <h2>Tiến độ các dự án</h2>
+            <div 
+                id="pie_chart2" 
+                [chartData]="pie_ChartData"
+                [chartOptions]="pie_ChartOptions"
+                chartType="ColumnChart "
+                GoogleChart
+            >
+            </div>
+        </div>
+    </div>
+</div>
