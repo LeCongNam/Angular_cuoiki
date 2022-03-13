@@ -17,6 +17,7 @@ import { LoaddingComponent } from './content/loadding/loadding.component';
 import { UpdateItemComponent } from './content/update-item/update-item.component';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { RegisterComponent } from './content/register/register.component';
+import { LoginComponent } from './content/login/login.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { RegisterComponent } from './content/register/register.component';
     LoaddingComponent,
     UpdateItemComponent,
     RegisterComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
