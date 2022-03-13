@@ -15,7 +15,7 @@
     <div class="form-row">
       <div class="col-md-4 mb-3">
         <label for="validationTooltip01">Tên dự án <span class="require-inp">*</span></label>
-        <input type="text" formControlName="project_name" value="{{projectItem.project_name}}"
+        <input type="text" formControlName="project_name" ngModel="{{project_name}}" value="{{projectItem.project_name}}"
           class="form-control" id="validationTooltip01" placeholder="Tên dự án" required>
         <!-- Start Err -->
         <div class="error" *ngIf="projectForm.get('project_name').dirty && 

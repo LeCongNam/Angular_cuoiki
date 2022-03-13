@@ -20,6 +20,10 @@ export class UpdateItemComponent implements OnInit {
 
 
   @Input() item: object = {};
+  project_name: any;
+  progress: number=0;
+  author: any;
+  state: any;
 
 
   constructor(private projectServices: ProjectServices) { }
@@ -66,12 +70,12 @@ export class UpdateItemComponent implements OnInit {
                     'title':"Cập nhật project thành công: ",
                     'icon':'success'
                 })
-                this.projectItem.project_name = 'Người thực hiện'
+                this.project_name = 'Người thực hiện'
                 this.projectItem.day_complete = ''
                 this.projectItem.day_start = ''
-                this.projectItem.progress = 0
-                this.projectItem.author = ''
-                this.projectItem.state = ''
+                this.progress = 0
+                this.author = ''
+                this.state = ''
             })
             .catch(err=>{
               Swal.fire({

@@ -38,7 +38,7 @@ export class AddFormComponent implements OnInit {
             this.projectServices.addProject(dataToJson)
                 .then((res:any)=>{
                    Swal.fire({
-                        'title':"Cập nhật thành công",
+                        'title':"Thêm thành công",
                         'icon':'success'
                     })
              
@@ -51,12 +51,12 @@ export class AddFormComponent implements OnInit {
                     this.projectForm.get('state').setValue('')
                 })
                 .catch(err=>Swal.fire({
-                    title:"Lỗi khi cập nhật project! Vui lòng thử lại",
+                    title:"Lỗi khi thêm project! Vui lòng thử lại",
                     icon:'error'
                 }))
         }else{
             Swal.fire({
-                'title':"Vui lòng kiểm tra lại thông tin",
+                'title':"Vui lòng kiểm tra lại thông tin!!!",
                 'icon':'error'
             })
         }
