@@ -4,6 +4,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.all.js';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { UserServices } from '../../services/UserServices';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,12 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   userForm: FormGroup | any
   router:Router |any
-  constructor(private userServices:UserServices) { }
+  authService: AuthService| any;
+ 
+
+
+
+  constructor(private userServices:UserServices, _authService:AuthService) { }
 
   ngOnInit(): void {
       this.initForm()
@@ -35,8 +41,7 @@ export class LoginComponent implements OnInit {
                       'title':"Đăng nhập thành công",
                       'icon':'success'
                   })
-                  this.router.navigate(['home']);
-           
+                  localStorage.setItem('token',res.token)
               })
               .catch(err=>{
                 console.log(err);
