@@ -1,0 +1,14 @@
+<<<<<<< HEAD
+.sidebar{
+    min-height: 100vh;
+    height: 100%;
+    max-height: auto;
+    z-index: 10;
+=======
+.sidebar{
+    min-height: 100vh;
+    height: 100%;
+    max-height: auto;
+    z-index: 10;
+>>>>>>> 0e543a37e6ecfbcb12cbb98e5844e83a7d378ab4
+}
