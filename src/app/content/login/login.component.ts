@@ -37,18 +37,16 @@ export class LoginComponent implements OnInit {
           let dataToJson = JSON.stringify({...userForm.value})
           this.userServices.login(dataToJson)
               .then((res:any)=>{
-                console.log(res);
+                console.log(res.data.token);
+                
                  Swal.fire({
                       'title':"Đăng nhập thành công",
                       'icon':'success'
                   })
-                  localStorage.setItem('token',res.token)
-                  
-                  localStorage.setItem('userName',res.userInfo.user_name)
+                  localStorage.setItem('token',res.data.token)
+                  localStorage.setItem('userName',res.data.userInfo.user_name)
               })
               .catch(err=>{
-                console.log(err);
-                
                 Swal.fire({
                   title:"Có lỗi bất ngờ xảy ra! Vui lòng thử lại",
                   icon:'error'

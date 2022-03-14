@@ -37,7 +37,7 @@ export class BaseService {
        try {
           this.httpClient.post(this.urlApi+path, body, {headers:this.header})
           .subscribe((res:any) => {
-             resolve(res);
+            resolve(res);
           })
        } catch(error) {
           reject(error);
