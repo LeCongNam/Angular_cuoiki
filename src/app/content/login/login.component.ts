@@ -35,13 +35,16 @@ export class LoginComponent implements OnInit {
   onSubmit(userForm:NgForm){
       if(userForm.status == 'VALID'){
           let dataToJson = JSON.stringify({...userForm.value})
-          this.userServices.register(dataToJson)
+          this.userServices.login(dataToJson)
               .then((res:any)=>{
+                console.log(res);
                  Swal.fire({
                       'title':"Đăng nhập thành công",
                       'icon':'success'
                   })
                   localStorage.setItem('token',res.token)
+                  
+                  localStorage.setItem('userName',res.userInfo.user_name)
               })
               .catch(err=>{
                 console.log(err);
