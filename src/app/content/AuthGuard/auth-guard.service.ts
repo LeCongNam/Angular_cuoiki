@@ -7,13 +7,13 @@ import { AuthService } from '../../services/auth/auth.service';
 })
 export class AuthGuardService {
 constructor(
-    private _authService: AuthService,
+    private authService: AuthService,
     private _router: Router
   ) { }
 canActivate(next: ActivatedRouteSnapshot, 
     state: RouterStateSnapshot): Observable<boolean> | 
      Promise<boolean> | boolean {
-    if (this._authService.getToken()) {
+    if (this.authService.getToken()) {
       return true;
     }
     // Redirect về trang login

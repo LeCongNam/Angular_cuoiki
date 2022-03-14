@@ -17,8 +17,8 @@ import { LoaddingComponent } from './content/loadding/loadding.component';
 import { UpdateItemComponent } from './content/update-item/update-item.component';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { RegisterComponent } from './content/register/register.component';
-import { LoginComponent } from './content/login/login.component';
 import { ReportComponent } from './content/report/report.component';
+import { LoginComponent } from './content/login/login.component';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 import { GoogleChartComponent } from './content/report/google-chart/google-chart.component';
 
@@ -30,11 +30,11 @@ import { GoogleChartComponent } from './content/report/google-chart/google-chart
     ContentComponent,
     FooterComponent,
     DatePipe,
+    LoginComponent,
     AddFormComponent,
     LoaddingComponent,
     UpdateItemComponent,
     RegisterComponent,
-    LoginComponent,
     ReportComponent,
     GoogleChartComponent,
   ],
