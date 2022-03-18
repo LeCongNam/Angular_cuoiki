@@ -33,4 +33,4 @@ export class GoogleChartComponent implements OnInit {
       wrapper.draw();
     }
   }
-}
+}``

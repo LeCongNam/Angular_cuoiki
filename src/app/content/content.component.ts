@@ -15,8 +15,9 @@ export class ContentComponent implements OnInit {
     isShow: Boolean = true
     newData: Project[] | any = []
     projectItem: any = {}
-
-    constructor(private projectServices: ProjectServices) { }
+    userName:String |any
+    constructor(private projectServices: ProjectServices) {
+     }
 
 
 
