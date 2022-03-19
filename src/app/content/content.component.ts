@@ -33,12 +33,11 @@ export class ContentComponent implements OnInit {
             .then((res: any) => {
                 this.data = res
                 this.isShow = false
+                this.assignItem()
             })
             .catch(err => console.log(err))
-            let dem=0
-            console.log(++dem);
             
-              /* 
+            /* 
                 + Lỗi: Không nhìn thấy tên user và avatar sau khi login. Cần phải  reload page
                 + Issue: Xử lí bằng hàm này nhưng bị call liên tục
               */
@@ -114,22 +113,26 @@ export class ContentComponent implements OnInit {
     }
 
 
+    projectItems:any = []
+    assignItem(){
+       this.projectItems = Object.assign([],this.data)        
+    }
 
     searchString:String=''
-    search(event: any): any {
+    search(value: any): any {
+        let result = Object.assign([],this.data)
+        this.searchString =value.toLowerCase()
         
-        let result = this.data
-        let lengthData = this.data.length
-        let searchInput = event.target.value.toLowerCase()
-        result = result.filter((item:any)=>item.project_name.toLowerCase().indexOf(searchInput) != -1)
-        if (result.length !=0) {
-            return  this.data =result
+        // search Result 
+        result = result.filter((item:any)=>item.project_name.toLowerCase().indexOf(this.searchString) != -1)
+        if (result.length != 0) {
+            return  this.projectItems = result
         }
 
-        if(this.searchString == ''){
-            return this.data
+        if(this.searchString.trim() == ''){
+            return  this.assignItem()
         }
-        return this.data
+        return   this.assignItem()
     }
 
 

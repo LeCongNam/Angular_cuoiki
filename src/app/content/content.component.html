@@ -19,8 +19,8 @@
                         <div class="col-sm-12 col-md-6 ">
                             <div id="dataTable_filter" class="dataTables_filter">
                                 <label>Search:
-                                    <input type="search" class="form-control form-control-sm" placeholder=""
-                                        aria-controls="dataTable" [(ngModel)]="searchString" (input)="search($event)" >
+                                    <input type="search" #mySearch class="form-control form-control-sm" placeholder=""
+                                        aria-controls="dataTable" [(ngModel)]="searchString" (input)="search(mySearch.value)" >
                                 </label>
                             </div>
                         </div>
@@ -80,7 +80,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="odd" *ngFor="let item of data; let i= index">
+                                    <tr class="odd" *ngFor="let item of projectItems; let i= index">
                                         <td class="sorting_1">{{ i+1 }}</td>
                                         <td>{{ item.project_name }}</td>
                                         <td>{{ item.day_start | date}}</td>
