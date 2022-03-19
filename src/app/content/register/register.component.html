@@ -11,7 +11,7 @@
                     <form #fm="ngForm" [formGroup]="userForm" (ngSubmit)="onSubmit(userForm)" class="user">
                         <div class="form-group row">
                             <div class="col-sm-12">
-                                <input type="text" class="form-control form-control-user" id="exampleLastName"
+                                <input type="text" class="form-control form-control-user" name="user_name" id="exampleLastName"
                                     formControlName="user_name" placeholder="User Name">
                             </div>
                             <!-- Start Err -->
@@ -44,7 +44,7 @@
                                 <input type="password" class="form-control form-control-user" id="exampleRepeatPassword"
                                  formControlName="password"   placeholder="Password">
                             </div>
-                            <!-- Start Err -->
+                            <!-- Start Err --> a>=
                             <div class="error" *ngIf="userForm.get('password').dirty && 
                               userForm.get('password').errors?.required">
                                 password không được bỏ trống*

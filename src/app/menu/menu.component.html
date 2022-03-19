@@ -46,9 +46,7 @@
             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-bell fa-fw"></i>
-                <!-- Counter - Alerts -->
             </a>
-            <!-- Dropdown - Alerts -->
 
         </li>
 
@@ -62,11 +60,21 @@
         <div class="topbar-divider d-none d-sm-block"></div>
 
         <li class="nav-item dropdown no-arrow">
-            <a class="nav-link dropdown-toggle" id="userDropdown" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small" >{{   userName}}</span>
-                <img class="img-profile rounded-circle" src="assets/img/undraw_profile.svg">
+            <a *ngIf="userName != '' " class="nav-link dropdown-toggle link-avt" id="userDropdown" role="button"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{userName}}</span>
+                <div class="trancent">
+                    <img style="z-index: 1000;" class="img-profile rounded-circle avt" src="assets/img/undraw_profile.svg">
+                    <ul class="nav-avt">
+                        <li routerLink="/login">Logout</li>
+                    </ul>
+                </div>
             </a>
+            <div *ngIf="userName == '' " class="nav-link dropdown-toggle" id="userDropdown" role="button"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a routerLink="/login" class="mr-2 d-none d-lg-inline text-gray-600 small">Login</a>
+                <a routerLink="/register" class="mr-2 d-none d-lg-inline text-gray-600 small">Register</a>
+            </div>
         </li>
 
     </ul>

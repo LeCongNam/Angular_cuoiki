@@ -12,7 +12,7 @@ export class MenuComponent implements OnInit {
 
   ngOnInit(): void {
     let userJsonData = localStorage.getItem('userName')
-    this.userName = userJsonData || 'user 1'
+    this.userName = userJsonData || ''
     console.log(this.userName);
   }
 
