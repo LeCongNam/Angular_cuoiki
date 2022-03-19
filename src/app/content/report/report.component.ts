@@ -11,6 +11,9 @@ import { GoogleChartComponent } from './google-chart/google-chart.component';
 export class ReportComponent implements OnInit {
   data: any
   dataRes: any = []
+  complete:any
+  inprogress:any
+  late:any
 
   public pie_ChartData:any = [];
 
@@ -41,6 +44,8 @@ export class ReportComponent implements OnInit {
           return total
 
         }, 0)
+
+
         var inProgress = this.data.reduce((total: number, item: { state: string; }) => {
           if (item.state.lastIndexOf('in progress') != -1) {
             return total += 1
@@ -56,6 +61,10 @@ export class ReportComponent implements OnInit {
 
         }, 0)
 
+        this.complete = complete
+        this.inprogress = inProgress
+        this.late = late
+
         this.dataRes = [
           ["Tình trạng", "Total"],
           ['hoàn thành', complete],
@@ -63,11 +72,25 @@ export class ReportComponent implements OnInit {
           ['trễ', late],
         ]
         this.dataRes.map((item:any)=>this.pie_ChartData.push(item))
-       
+       this.sumLateProjects()
       })
-      
       .catch(err => console.log(err))
   }
+
+  lateItems:Array<any>=[]
+  message:String=''
+  // ="Không có dự án trễ hạn"
+ sumLateProjects(){
+    // có: trả về danh sách
+    let lateItems = Object.assign([],this.data)
+    lateItems = lateItems.filter((item:any)=>item.state.indexOf('late') != -1)
+    if (lateItems.length !=0) {
+      return this.lateItems =  lateItems
+    }
+    // Không: trả về dòng thông báo không có
+    return  this.message ="Không có dự án trễ hạn"
+  }
+
 
 
 

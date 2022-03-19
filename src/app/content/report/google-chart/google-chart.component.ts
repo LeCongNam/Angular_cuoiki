@@ -17,8 +17,7 @@ export class GoogleChartComponent implements OnInit {
         setTimeout(() =>{
           this.drawGraph(this.chartOptions,this.chartType,this.chartData,this._element)
         },1000);
-      },1000
-    );
+      },1000);
   }
   drawGraph (chartOptions: Object,chartType: string,chartData: Object,ele: { id: any; }) {
     google.charts.setOnLoadCallback(drawChart);

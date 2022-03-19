@@ -5,6 +5,54 @@
             <div id="pie_chart" [chartData]="pie_ChartData" [chartOptions]="pie_ChartOptions" chartType="PieChart"
                 GoogleChart></div>
         </div>
-        <hr>
+        <div class="col mt-5">
+            <div class="container">
+                <div class="row">
+                    <div class="plan">
+                        <h4>Tổng các dự án</h4>
+                        <table class="table table-dark">
+                            <thead>
+                                <tr>
+                                    <th scope="col"> Hoàn thành</th>
+                                    <th scope="col"> Đang triển khai</th>
+                                    <th scope="col"> Trễ thời hạn</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">{{complete}} dự án</th>
+                                    <td>{{ inprogress }} dự án</td>
+                                    <td>{{ late }} dự án</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="plan">
+                        <h4>Dự án trễ kế hạch</h4>
+                        <table class="table table-dark">
+                            <thead>
+                                <tr>
+                                    <th scope="col"> Hoàn thành</th>
+                                    <th scope="col"> Đang triển khai</th>
+                                    <th scope="col"> Trễ thời hạn</th>
+                                    <th scope="col"> Người thực hiện</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngIf="message != '' "></tr>
+                                <tr *ngFor="let item of lateItems">
+                                    <th scope="row">{{item.project_name }}</th>
+                                    <td>{{ item.day_start | date }} </td>
+                                    <td>{{ item.day_complete | date}}</td>
+                                    <td>{{ item.author}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

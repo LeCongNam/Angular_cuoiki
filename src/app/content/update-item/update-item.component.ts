@@ -53,13 +53,16 @@ export class UpdateItemComponent implements OnInit {
     for (let property in changes) {
       if (property === 'item') {
         this.projectItem = this.item
-        this.projectItem.day_complete = new Date(this.projectItem.day_complete).toISOString().slice(0, 10)
-        this.projectItem.day_start = new Date(this.projectItem.day_start).toISOString().slice(0, 10)
         this.myValue = this.projectItem.progress
         this.project_name = this.projectItem.project_name
         this.progress = this.projectItem.progress
         this.author = this.projectItem.author
         this.state = this.projectItem.state
+
+        if(this.projectItem.day_complete){
+          this.projectItem.day_complete = new Date(this.projectItem.day_complete).toISOString().slice(0, 10)
+          this.projectItem.day_start = new Date(this.projectItem.day_start).toISOString().slice(0, 10)
+        }
       }
     }
   }

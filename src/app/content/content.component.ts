@@ -19,6 +19,7 @@ export class ContentComponent implements OnInit {
     newData: Project[] | any = []
     projectItem: any = {}
     userName:String |any
+    
 
     constructor(private projectServices: ProjectServices) {
         
