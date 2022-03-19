@@ -1,4 +1,5 @@
 import {Directive,ElementRef,Input,OnInit} from '@angular/core';
+
 declare var google:any;
 @Directive({
   selector: '[GoogleChart]'

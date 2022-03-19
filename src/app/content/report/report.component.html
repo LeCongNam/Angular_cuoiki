@@ -2,8 +2,17 @@
     <div class="row">
         <div class="col">
             <h1>Báo cáo tiến độ thi công</h1>
-            <div id="pie_chart" [chartData]="pie_ChartData" [chartOptions]="pie_ChartOptions" chartType="PieChart"
-                GoogleChart></div>
+            <!-- <div id="pie_chart" [chartData]="pie_ChartData" [chartOptions]="pie_ChartOptions" chartType="PieChart"
+                GoogleChart></div> -->
+
+                <canvas baseChart 
+                    [data]="pieChartData" 
+                    [labels]="chartLabel" 
+                    [chartType]="type"
+                    [options]="chartOptions"
+                    [plugins]="plugin"
+                    [legend]="legend">
+             </canvas>
         </div>
         <div class="col mt-5">
             <div class="container">
@@ -13,6 +22,7 @@
                         <table class="table table-dark">
                             <thead>
                                 <tr>
+                                    <th scope="col"> Tổng</th>
                                     <th scope="col"> Hoàn thành</th>
                                     <th scope="col"> Đang triển khai</th>
                                     <th scope="col"> Trễ thời hạn</th>
@@ -20,9 +30,10 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <th scope="row">{{complete}} dự án</th>
+                                    <th scope="row">{{complete+late+ inprogress}} dự án</th>
+                                    <td>{{complete}} dự án</td>
                                     <td>{{ inprogress }} dự án</td>
-                                    <td>{{ late }} dự án</td>
+                                    <td style="color: red;">{{ late }} dự án</td>
                                 </tr>
                             </tbody>
                         </table>

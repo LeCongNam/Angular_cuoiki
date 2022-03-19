@@ -21,6 +21,7 @@ import { ReportComponent } from './content/report/report.component';
 import { LoginComponent } from './content/login/login.component';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 import { GoogleChartComponent } from './content/report/google-chart/google-chart.component';
+import { ChartsModule } from 'ng2-charts';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { GoogleChartComponent } from './content/report/google-chart/google-chart
     ReactiveFormsModule,
     SweetAlert2Module,
     SweetAlert2Module.forRoot(),
-    Ng2GoogleChartsModule
+    Ng2GoogleChartsModule,
+    ChartsModule
   ],
   providers: [
     LoggerService,
