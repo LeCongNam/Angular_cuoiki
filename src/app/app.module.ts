@@ -22,6 +22,7 @@ import { LoginComponent } from './content/login/login.component';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 import { GoogleChartComponent } from './content/report/google-chart/google-chart.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

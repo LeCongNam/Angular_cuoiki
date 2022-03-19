@@ -1,12 +1,14 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, Injector } from '@angular/core';
+import { env } from "../ENV/Env";
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class BaseService {
   private httpClient: HttpClient | any
-  private urlApi = 'https://angularapp0612.herokuapp.com'
+  private urlApi = env.URL|| 'https://angularapp0612.herokuapp.com'
   private header: HttpHeaders | any;
 
   constructor(private injectable: Injector) {

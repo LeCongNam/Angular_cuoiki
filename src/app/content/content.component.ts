@@ -2,7 +2,8 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ProjectServices } from '../services/projectServices';
 import { Project } from '../Model/project.model';
 import Swal from 'sweetalert2/dist/sweetalert2.all.js';
-
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faPen } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
     selector: 'app-content',
@@ -10,42 +11,41 @@ import Swal from 'sweetalert2/dist/sweetalert2.all.js';
     styleUrls: ['./content.component.css']
 })
 export class ContentComponent implements OnInit {
+    faTrash=faTrash
+    faPen = faPen
     data: Project[] | any = [];
     inProgress: String = ""
     isShow: Boolean = true
     newData: Project[] | any = []
     projectItem: any = {}
     userName:String |any
+
     constructor(private projectServices: ProjectServices) {
+        
      }
 
 
 
     ngOnInit(): void {
         this.loadProject()
+        
     }
 
-
-    saveFile(id: any) {
-
-    }
-
-    handleDenial() {
-
-    }
-
-    deleteFile() {
-
-    }
-
+   
 
     loadProject() {
         this.projectServices.getProject({})
             .then((res: any) => {
                 this.data = res
                 this.isShow = false
+              
             })
             .catch(err => console.log(err))
+            let dem=0
+            console.log(++dem);
+            
+              //Issue: Xử lí bằng hàm này nhưng bị call liên tục
+                // window.location.reload()
     }
 
 

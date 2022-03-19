@@ -96,14 +96,16 @@
                                                 >
                                         </td>
                                         <td>
-                                            <button [swal]="deleteSwal" class="btn btn-danger mr-2">Xoá</button>
+                                            <button [swal]="deleteSwal" class="btn btn-danger mr-2">
+                                                <fa-icon [icon]="faTrash"></fa-icon> Xoá
+                                            </button>
                                             <swal #deleteSwal title="Bạn muốn xoá dự án {{ item.project_name}}?"
                                                 text="Hành động này không  thể khôi phục!!!!" icon="question"
                                                 [showCancelButton]="true" [focusCancel]="true"
                                                 (confirm)="deleteProject(item._id)">
                                             </swal>
                                             <a (click)="sendItem(item)" routerLinkActive="router-link-active"
-                                                type="button" class="btn btn-warning">Sửa</a>
+                                                type="button" class="btn btn-warning"><fa-icon [icon]="faPen"></fa-icon>Sửa</a>
                                         </td>
 
                                     </tr>

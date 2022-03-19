@@ -64,9 +64,10 @@
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{userName}}</span>
                 <div class="trancent">
-                    <img style="z-index: 1000;" class="img-profile rounded-circle avt" src="assets/img/undraw_profile.svg">
-                    <ul class="nav-avt">
-                        <li routerLink="/login">Logout</li>
+                    <img style="z-index: 1000;" (click)="showDropdown()" class="img-profile rounded-circle avt" src="assets/img/undraw_profile.svg">
+
+                    <ul class="nav-avt" [ngClass]="{'info-show': isShowdropDown}">
+                        <li routerLink="/login" (click)="logout()">Logout</li>
                     </ul>
                 </div>
             </a>

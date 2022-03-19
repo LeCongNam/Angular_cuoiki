@@ -6,6 +6,8 @@ import { UserServices } from '../../services/UserServices';
 import { Router } from '@angular/router';
 import { AuthService } from "../../services/Auth/auth.service";
 
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,10 +15,14 @@ import { AuthService } from "../../services/Auth/auth.service";
 })
 export class LoginComponent implements OnInit {
   userForm: FormGroup | any
-  router: Router | any
+  // router: Router | any
   authService: AuthService | any;
+  reload: string=''
 
-  constructor(private userServices: UserServices, _authService: AuthService) { }
+  constructor(private userServices: UserServices,
+     _authService: AuthService,
+     private router: Router
+     ) { }
 
   ngOnInit(): void {
     this.initForm()
@@ -41,7 +47,8 @@ export class LoginComponent implements OnInit {
               'title': "Đăng nhập thành công",
               'icon': 'success'
             })
-          
+            this.router.navigate(['/home']); 
+            
         })
         .catch(err => {
           Swal.fire({
@@ -60,3 +67,7 @@ export class LoginComponent implements OnInit {
   }
 
 }
+function reload(arg0: string[], reload: any, arg2: string) {
+  throw new Error('Function not implemented.');
+}
+
