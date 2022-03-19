@@ -24,31 +24,28 @@ export class ContentComponent implements OnInit {
         
      }
 
-
-
     ngOnInit(): void {
         this.loadProject()
-        
     }
-
-   
 
     loadProject() {
         this.projectServices.getProject({})
             .then((res: any) => {
                 this.data = res
                 this.isShow = false
-              
             })
             .catch(err => console.log(err))
             let dem=0
             console.log(++dem);
             
-              //Issue: Xử lí bằng hàm này nhưng bị call liên tục
+              /* 
+                + Lỗi: Không nhìn thấy tên user và avatar sau khi login. Cần phải  reload page
+                + Issue: Xử lí bằng hàm này nhưng bị call liên tục
+              */
                 // window.location.reload()
     }
 
-
+    
     isComplete(args: string = '') {
 
         if (args) {
@@ -116,19 +113,26 @@ export class ContentComponent implements OnInit {
         this.projectItem = item
     }
 
-    searchString: string = ''
 
+
+    searchString:String=''
     search(event: any): any {
-        console.log(event.target.value);
-        this.searchString = event.target.value.toLowerCase()
-        let array = this.data
-        let newArr = []
-        newArr = array.filter((item: any) => item.project_name.toLowerCase() == this.searchString)
+        
+        let result = this.data
+        let lengthData = this.data.length
+        let searchInput = event.target.value.toLowerCase()
+        result = result.filter((item:any)=>item.project_name.toLowerCase().indexOf(searchInput) != -1)
+        if (result.length !=0) {
+            return  this.data =result
+        }
 
-        if (Number(newArr) > 0) return this.data = newArr
-
+        if(this.searchString == ''){
+            return this.data
+        }
         return this.data
     }
+
+
 
     reloadPage(varReq:any){
         console.log(1);
