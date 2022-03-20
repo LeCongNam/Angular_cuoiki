@@ -40,8 +40,12 @@ export class BaseService {
           this.httpClient.post(this.urlApi+path, body, {headers:this.header})
           .subscribe((res:any) => {
             resolve(res);
+          },(error:any)=>{
+            console.log(error);
+            
           })
        } catch(error) {
+         debugger;
           reject(error);
        }
     })

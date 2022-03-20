@@ -58,16 +58,14 @@ export class LoginComponent implements OnInit {
         })
     } else {
       console.log(userForm);
-
       Swal.fire({
         'title': "Vui lòng kiểm tra lại thông tin!!!",
         'icon': 'error'
       })
     }
+    
   }
+  
+}
 
-}
-function reload(arg0: string[], reload: any, arg2: string) {
-  throw new Error('Function not implemented.');
-}
 

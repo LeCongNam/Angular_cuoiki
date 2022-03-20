@@ -48,5 +48,6 @@ export class RegisterComponent implements OnInit {
               'icon':'error'
           })
       }
+      
   }
 }
